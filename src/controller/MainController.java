@@ -1,12 +1,15 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import application.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,7 +17,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class MainController {
+public class MainController implements Initializable {
 	
 	private Main app;
 	
@@ -63,7 +66,7 @@ public class MainController {
     @FXML
     void startPlatformMode(ActionEvent event) throws IOException {
     	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/view/PlatformFrame.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/view/PlatformModeFrame.fxml"));
 		Scene scene = new Scene(root);
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		window.setScene(scene);
@@ -81,6 +84,18 @@ public class MainController {
 		window.initStyle(StageStyle.UNDECORATED);
 		window.show();
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		btnPartida.setFocusTraversable(false);
+		btnRanking.setFocusTraversable(false);
+		btnBack.setFocusTraversable(false);
+		btnPlatform.setFocusTraversable(false);
+		btnValentine.setFocusTraversable(false);
+
+		
+	}
     	
 
 }

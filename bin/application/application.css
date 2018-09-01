@@ -30,6 +30,16 @@
     -fx-font-size: 12pt;
 }
 
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-secondary;
+    -fx-background-radius: 20px;
+    -fx-font-size: 12pt;
+}
+
+
+
 .button:hover, .button:focused{
     -fx-border-color: -fx-secondary;
     -fx-background-color: -fx-secondary;
@@ -164,14 +174,7 @@
 }
 
 /*Chart Styling*/
-.data0.chart-pie{
-    -fx-pie-color: -fx-secondary;
-    -fx-border-color: derive(-fx-secondary, -30%);
-}
-.data1.chart-pie{
-    -fx-pie-color: derive(-fx-primary, 30%);
-    -fx-border-color: derive(-fx-primary, 30%);
-}
+
 .chart-pie-label
 {
     -fx-fill : derive(-fx-secondary, -5%);

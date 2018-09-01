@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -21,6 +22,9 @@
             <InnerShadow />
          </effect>
       </Button>
-      <Button fx:id="btnRanking" graphicTextGap="2.0" layoutX="33.0" layoutY="250.0" mnemonicParsing="false" onAction="#startRanking" prefHeight="37.0" prefWidth="211.0" text="RANKING" />
+      <Button fx:id="btnRanking" graphicTextGap="2.0" layoutX="33.0" layoutY="250.0" mnemonicParsing="false" onAction="#startRanking" prefHeight="37.0" prefWidth="211.0" text="RANKING">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></Button>
    </children>
 </AnchorPane>
