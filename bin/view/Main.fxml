@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-500" maxWidth="-900" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <ImageView fitHeight="506.0" fitWidth="913.0" layoutX="-12.0" layoutY="-3.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../image/fortnite-wallpaper.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnPartida" graphicTextGap="2.0" layoutX="326.0" layoutY="250.0" mnemonicParsing="false" onAction="#startMatch" prefHeight="37.0" prefWidth="211.0" text="CREAR PARTIDA" />
+      <Button fx:id="btnPlatform" layoutX="608.0" layoutY="250.0" mnemonicParsing="false" onAction="#startPlatformMode" prefHeight="37.0" prefWidth="211.0" text="MODO PLATAFORMA" />
+      <Button fx:id="btnValentine" layoutX="326.0" layoutY="328.0" mnemonicParsing="false" onAction="#startValentineMode" prefHeight="37.0" prefWidth="211.0" text="MODO SAN VALENTIN" />
+      <Button fx:id="btnBack" layoutX="412.0" layoutY="407.0" mnemonicParsing="false" onAction="#exitApp" text="Salir" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <Button fx:id="btnRanking" graphicTextGap="2.0" layoutX="33.0" layoutY="250.0" mnemonicParsing="false" onAction="#startRanking" prefHeight="37.0" prefWidth="211.0" text="RANKING" />
+   </children>
+</AnchorPane>
