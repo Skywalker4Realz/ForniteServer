@@ -70,7 +70,7 @@ public class MainController implements Initializable {
 		Scene scene = new Scene(root);
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		window.setScene(scene);
-		window.initStyle(StageStyle.TRANSPARENT);
+		//window.initStyle(StageStyle.TRANSPARENT);
 		window.show();
     }
 
@@ -81,7 +81,7 @@ public class MainController implements Initializable {
 		Scene scene = new Scene(root);
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		window.setScene(scene);
-		window.initStyle(StageStyle.UNDECORATED);
+		//window.initStyle(StageStyle.UNDECORATED);
 		window.show();
     }
 
