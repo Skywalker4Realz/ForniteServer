@@ -20,7 +20,7 @@ import javafx.fxml.Initializable;
 
 public class PlatformModeController implements Initializable{
 
-	
+	//
 		
 	  @FXML
 	    private TableView<?> tablePlayers;

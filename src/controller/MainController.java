@@ -77,7 +77,7 @@ public class MainController implements Initializable {
     @FXML
     void startValentineMode(ActionEvent event) throws IOException {
     	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/view/ValentinesMode.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/view/ValentinesModeFrame.fxml"));
 		Scene scene = new Scene(root);
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		window.setScene(scene);
