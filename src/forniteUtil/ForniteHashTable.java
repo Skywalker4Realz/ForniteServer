@@ -12,6 +12,53 @@ public class ForniteHashTable<K, E>{
 	{
 		array = new Object[10];
 		size = 0;
+		for (int i = 0; i < array.length; i++) {
+			array[i] = new ForniteList<Pair<K, E>>();
+		}
 	}
 	
+	public int hash(K key)
+	{
+		return key.hashCode();
+	}
+	
+	public void put(K key, E item)
+	{
+		int index = hash(key)%10;
+		ForniteList<E> f = (ForniteList<E>)array[index];
+		Pair<K, E> i = new Pair<K, E>(key, item);
+		f.add((E) i);
+		size++;
+	}
+	
+	public E get(K key)
+	{
+		E ret = null;
+		ForniteList<E> list = (ForniteList<E>)array[key.hashCode()%10];
+		for (int i = 0; i < list.size(); i++) {
+			Pair<K, E> p = (Pair<K, E>)list.get(i);
+			if(p.getKey().equals(key))
+			{
+				ret = p.getValue();
+			}
+		}
+		return ret;
+	}
+	
+	public void remove(K key)
+	{
+		ForniteList<E> list = (ForniteList<E>)array[key.hashCode()%10];
+		for (int i = 0; i < list.size(); i++) {
+			Pair<K, E> p = (Pair<K, E>)list.get(i);
+			if(p.getKey().equals(key))
+			{
+				list.remove(i);
+			}
+		}
+	}
+	
+	public int size()
+	{
+		return size;
+	}
 }
