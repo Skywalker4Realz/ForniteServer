@@ -1,10 +1,10 @@
-package forniteUtil;
+package fornite.util;
 
-public class Pair<K, E> {
+public class FornitePair<K, E> {
 
 	private K key;
 	private E value;
-	public Pair(K k, E e) {
+	public FornitePair(K k, E e) {
 		key = k;
 		value = e;
 	}

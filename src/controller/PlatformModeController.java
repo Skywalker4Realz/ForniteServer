@@ -2,8 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +18,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Player;
 import javafx.fxml.Initializable;
 
 public class PlatformModeController implements Initializable{
@@ -23,22 +28,22 @@ public class PlatformModeController implements Initializable{
 	//
 		
 	  @FXML
-	    private TableView<?> tablePlayers;
+	    private TableView<Player> tablePlayers;
 
 	    @FXML
-	    private TableColumn<?, ?> colNickname;
+	    private TableColumn<Player, String> colNickname;
 
 	    @FXML
-	    private TableColumn<?, ?> colLevel;
+	    private TableColumn<Player, String> colLevel;
 
 	    @FXML
-	    private TableColumn<?, ?> colKills;
+	    private TableColumn<Player, String> colKills;
 
 	    @FXML
-	    private TableColumn<?, ?> colPlatform;
+	    private TableColumn<Player, String> colPlatform;
 
 	    @FXML
-	    private TableColumn<?, ?> colPing;
+	    private TableColumn<Player, String> colPing;
 
 	    @FXML
 	    private Button btnBack;
@@ -47,14 +52,35 @@ public class PlatformModeController implements Initializable{
 	    private Button btnMatch;
 
 	    @FXML
-	    private ComboBox<?> comboPlatform;
+	    private ComboBox<String> comboPlatform;
 
 	    @FXML
-	    private Spinner<?> spnNumber;
+	    private Spinner<Integer> spnNumber;
 	    
 	    @Override
 		public void initialize(URL location, ResourceBundle resources) {
-			// TODO Auto-generated method stub
+	    	ObservableList<String> options = 
+	    		    FXCollections.observableArrayList(
+	    		        "Playstation",
+	    		        "Xbox",
+	    		        "PC"
+	    		    );
+	    	comboPlatform.setItems(options);
+	    	
+	    	
+	    	
+	    	final ObservableList<Player> data = FXCollections.observableArrayList(
+				   
+				  
+				);
+			colNickname.setCellValueFactory(new PropertyValueFactory<Player, String>("Nickname"));
+			colLevel.setCellValueFactory(new PropertyValueFactory<Player, String>("Level"));
+			colKills.setCellValueFactory(new PropertyValueFactory<Player, String>("Kills"));
+			colPing.setCellValueFactory(new PropertyValueFactory<Player, String>("Ping"));
+			colPlatform.setCellValueFactory(new PropertyValueFactory<Player, String>("Platform"));
+
+
+			tablePlayers.setItems(data);
 			
 		}
 

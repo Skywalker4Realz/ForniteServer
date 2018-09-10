@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,33 +16,31 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Player;
 
 public class MatchController implements Initializable {
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
     @FXML
-    private TableView<?> tablePlayers;
+    private TableView<Player> tablePlayers;
 
     @FXML
-    private TableColumn<?, ?> colNickname;
+    private TableColumn<Player, String> colNickname;
 
     @FXML
-    private TableColumn<?, ?> colLevel;
+    private TableColumn<Player, String> colLevel;
 
     @FXML
-    private TableColumn<?, ?> colKills;
+    private TableColumn<Player, String> colKills;
 
     @FXML
-    private TableColumn<?, ?> colPlatform;
+    private TableColumn<Player, String> colPlatform;
 
     @FXML
-    private TableColumn<?, ?> colPing;
+    private TableColumn<Player, String> colPing;
 
     @FXML
     private Button btnBack;
@@ -53,6 +53,23 @@ public class MatchController implements Initializable {
 
     }
 
+    @Override
+	public void initialize(URL location, ResourceBundle resources) {
+    	final ObservableList<Player> data = FXCollections.observableArrayList(
+			   
+			  
+			);
+		colNickname.setCellValueFactory(new PropertyValueFactory<Player, String>("Nickname"));
+		colLevel.setCellValueFactory(new PropertyValueFactory<Player, String>("Level"));
+		colKills.setCellValueFactory(new PropertyValueFactory<Player, String>("Kills"));
+		colPing.setCellValueFactory(new PropertyValueFactory<Player, String>("Ping"));
+		colPlatform.setCellValueFactory(new PropertyValueFactory<Player, String>("Platform"));
+
+
+		tablePlayers.setItems(data);
+		
+	}
+    
     @FXML
     void goBack(ActionEvent event) throws IOException {
     	Parent root;
