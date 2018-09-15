@@ -49,7 +49,7 @@ public class MainController implements Initializable {
     @FXML
     void startMatch(ActionEvent event) throws IOException {
     	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/view/GameFrame.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/resources/GameFrame.fxml"));
 		Scene scene = new Scene(root);
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		window.setScene(scene);
@@ -60,7 +60,7 @@ public class MainController implements Initializable {
     void startRanking(ActionEvent event) throws IOException {
     	
     	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/view/RankingFrame.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/resources/RankingFrame.fxml"));
 		Scene scene = new Scene(root);
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		window.setScene(scene);
@@ -71,7 +71,7 @@ public class MainController implements Initializable {
     @FXML
     void startPlatformMode(ActionEvent event) throws IOException {
     	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/view/PlatformModeFrame.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/resources/PlatformModeFrame.fxml"));
 		Scene scene = new Scene(root);
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		window.setScene(scene);
@@ -82,7 +82,7 @@ public class MainController implements Initializable {
     @FXML
     void startValentineMode(ActionEvent event) throws IOException {
     	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/view/ValentinesModeFrame.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/resources/ValentinesModeFrame.fxml"));
 		Scene scene = new Scene(root);
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		window.setScene(scene);
