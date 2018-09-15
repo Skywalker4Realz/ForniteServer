@@ -2,9 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 import application.Main;
+import fornite.util.ForniteList;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.ForniteGlobalServer;
+import model.Player;
+import model.Server;
 
 public class MainController implements Initializable {
 	
@@ -93,7 +98,11 @@ public class MainController implements Initializable {
 		btnBack.setFocusTraversable(false);
 		btnPlatform.setFocusTraversable(false);
 		btnValentine.setFocusTraversable(false);
-
+		
+		
+		ForniteGlobalServer s = new ForniteGlobalServer();
+		s.uploadGlobalPlayers();
+		ForniteList<Server> o = s.getServers();
 		
 	}
     	

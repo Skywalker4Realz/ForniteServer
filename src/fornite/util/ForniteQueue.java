@@ -1,6 +1,6 @@
 package fornite.util;
 
-public class ForniteQueue<T, E> {
+public class ForniteQueue<E> {
 	
 	private ForniteNode<E> first;
 	private ForniteNode<E> last;

@@ -8,6 +8,7 @@ public class ForniteHashTable<K, E>{
 
 	private Object[] array;
 	private int size;
+	
 	public ForniteHashTable()
 	{
 		array = new Object[10];
