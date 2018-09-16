@@ -1,6 +1,6 @@
 package fornite.util;
 
-public class ForniteStack<T> {
+public class ForniteStack<T> implements IForniteStack<T>{
 
 	private Object[] array;
 	private int size;
@@ -8,7 +8,7 @@ public class ForniteStack<T> {
 		array = new Object[10];
 		size = 0;
 	}
-	
+	@Override
 	public void push(T o)
 	{
 		if(size==array.length)
@@ -22,7 +22,7 @@ public class ForniteStack<T> {
 		array[size] = (Object)o;
 		size++;
 	}
-	
+	@Override
 	public void pop() throws IndexOutOfBoundsException
 	{
 		if(!isEmpty())
@@ -35,19 +35,19 @@ public class ForniteStack<T> {
 			throw new IndexOutOfBoundsException();
 		}
 	}
-	
+	@Override
 	public boolean isEmpty()
 	{
-		boolean empty = false;
-		if(size==0)
-		{
-			empty = true;
-		}
-		return empty;
+		return size==0;
 	}
-	
+	@Override
 	public T top()
 	{
 		return (T)array[size-1];
+	}
+	@Override
+	public int size()
+	{
+		return size;
 	}
 }

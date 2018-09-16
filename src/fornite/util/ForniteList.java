@@ -1,6 +1,6 @@
 package fornite.util;
 
-public class ForniteList<T> {
+public class ForniteList<T> implements IForniteList<T> {
 
 	private Object[] array;
 	private int size;
@@ -8,7 +8,7 @@ public class ForniteList<T> {
 		array = new Object[10];
 		size = 0;
 	}
-	
+	@Override
 	public void add(T o)
 	{
 		if(size==array.length)
@@ -22,7 +22,7 @@ public class ForniteList<T> {
 		array[size] = (Object)o;
 		size++;
 	}
-	
+	@Override
 	public void remove(int i) throws IndexOutOfBoundsException
 	{
 		if(i<size)
@@ -36,8 +36,9 @@ public class ForniteList<T> {
 		{
 			throw new IndexOutOfBoundsException();
 		}
+		
 	}
-	
+	@Override
 	public T get(int i) throws IndexOutOfBoundsException
 	{
 		if(i<size)
@@ -49,7 +50,7 @@ public class ForniteList<T> {
 			throw new IndexOutOfBoundsException();
 		}
 	}
-	
+	@Override
 	public int size()
 	{
 		return size;

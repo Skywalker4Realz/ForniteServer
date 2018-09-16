@@ -4,7 +4,7 @@ import java.util.Hashtable;
 
 import model.Player;
 
-public class ForniteHashTable<K, E>{
+public class ForniteHashTable<K, E> implements IForniteHashTable<K, E>{
 
 	private Object[] array;
 	private int size;
@@ -18,20 +18,16 @@ public class ForniteHashTable<K, E>{
 		}
 	}
 	
-	public int hash(K key)
-	{
-		return key.hashCode();
-	}
-	
+	@Override
 	public void put(K key, E item)
 	{
-		int index = hash(key)%10;
+		int index = (key.hashCode())%10;
 		ForniteList<E> f = (ForniteList<E>)array[index];
 		FornitePair<K, E> i = new FornitePair<K, E>(key, item);
 		f.add((E) i);
 		size++;
 	}
-	
+	@Override
 	public E get(K key)
 	{
 		E ret = null;
@@ -45,7 +41,7 @@ public class ForniteHashTable<K, E>{
 		}
 		return ret;
 	}
-	
+	@Override
 	public void remove(K key)
 	{
 		ForniteList<E> list = (ForniteList<E>)array[key.hashCode()%10];
@@ -56,10 +52,16 @@ public class ForniteHashTable<K, E>{
 				list.remove(i);
 			}
 		}
+		size--;
 	}
-	
+	@Override
 	public int size()
 	{
 		return size;
+	}
+	@Override
+	public boolean isEmpty()
+	{
+		return size == 0;
 	}
 }
