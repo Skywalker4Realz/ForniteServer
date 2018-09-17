@@ -18,11 +18,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.ForniteGlobalServer;
 import model.Player;
 
 public class MatchController implements Initializable {
 
+	MainController main;
 	
+	private ObservableList<Player> data;
+
 	
     @FXML
     private TableView<Player> tablePlayers;
@@ -50,34 +54,48 @@ public class MatchController implements Initializable {
 
     @FXML
     void findMatch(ActionEvent event) {
-
     }
 
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
-    	final ObservableList<Player> data = FXCollections.observableArrayList(
-			   
-			  
-			);
+    	data = FXCollections.observableArrayList();
+		
 		colNickname.setCellValueFactory(new PropertyValueFactory<Player, String>("Nickname"));
-		colLevel.setCellValueFactory(new PropertyValueFactory<Player, String>("Level"));
+		colLevel.setCellValueFactory(new PropertyValueFactory<Player, String>("Experience"));
 		colKills.setCellValueFactory(new PropertyValueFactory<Player, String>("Kills"));
 		colPing.setCellValueFactory(new PropertyValueFactory<Player, String>("Ping"));
 		colPlatform.setCellValueFactory(new PropertyValueFactory<Player, String>("Platform"));
-
-
 		tablePlayers.setItems(data);
-		
+	}
+    
+	public void init(MainController m) {
+		main = m;
 	}
     
     @FXML
     void goBack(ActionEvent event) throws IOException {
-    	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/resources/Main.fxml"));
-		Scene scene = new Scene(root);
-		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		window.show();
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/resources/Main.fxml"));
+        Parent p = loader.load();
+        Scene scene = new Scene(p);
+        //access the controller and call a method
+        main = loader.getController();
+        
+        //This line gets the Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(scene);
+        window.show();
+		
     }
+
+	public ObservableList<Player> getData() {
+		return data;
+	}
+    
+    
+    
+    
+    
 
 }

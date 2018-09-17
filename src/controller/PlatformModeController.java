@@ -25,9 +25,10 @@ import javafx.fxml.Initializable;
 
 public class PlatformModeController implements Initializable{
 
-	//
-		
-	  @FXML
+	
+		MainController main;
+
+		@FXML
 	    private TableView<Player> tablePlayers;
 
 	    @FXML
@@ -56,6 +57,7 @@ public class PlatformModeController implements Initializable{
 
 	    @FXML
 	    private Spinner<Integer> spnNumber;
+	    
 	    
 	    @Override
 		public void initialize(URL location, ResourceBundle resources) {
@@ -91,13 +93,23 @@ public class PlatformModeController implements Initializable{
 
 	    @FXML
 	    void goBack(ActionEvent event) throws IOException {
-	    	Parent root;
-			root = FXMLLoader.load(getClass().getResource("/resources/Main.fxml"));
-			Scene scene = new Scene(root);
-			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-			window.setScene(scene);
-			window.show();
+	    	FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(getClass().getResource("/resources/Main.fxml"));
+	        Parent p = loader.load();
+	        Scene scene = new Scene(p);
+	        //access the controller and call a method
+	        main = loader.getController();
+	        
+	        //This line gets the Stage information
+	        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	        
+	        window.setScene(scene);
+	        window.show();
+			
 	    }
 
+	    public void init(MainController m) {
+	    	main = m;
+	    }
 
 }

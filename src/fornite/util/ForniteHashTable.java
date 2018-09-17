@@ -21,7 +21,7 @@ public class ForniteHashTable<K, E> implements IForniteHashTable<K, E>{
 	@Override
 	public void put(K key, E item)
 	{
-		int index = (key.hashCode())%10;
+		int index = Math.abs((key.hashCode())%10);
 		ForniteList<E> f = (ForniteList<E>)array[index];
 		FornitePair<K, E> i = new FornitePair<K, E>(key, item);
 		f.add((E) i);
@@ -31,7 +31,7 @@ public class ForniteHashTable<K, E> implements IForniteHashTable<K, E>{
 	public E get(K key)
 	{
 		E ret = null;
-		ForniteList<E> list = (ForniteList<E>)array[key.hashCode()%10];
+		ForniteList<E> list = (ForniteList<E>)array[Math.abs(key.hashCode()%10)];
 		for (int i = 0; i < list.size(); i++) {
 			FornitePair<K, E> p = (FornitePair<K, E>)list.get(i);
 			if(p.getKey().equals(key))
