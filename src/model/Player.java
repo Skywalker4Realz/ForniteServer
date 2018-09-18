@@ -1,6 +1,6 @@
 package model;
 
-public class Player {
+public class Player implements Comparable<Player>{
 
 	//Zone constants
 	public static final int AMERICA = 1;
@@ -88,6 +88,31 @@ public class Player {
 	
 	public double getPing() {
 		return ping;
+	}
+
+	@Override
+	public int compareTo(Player o) {
+		int a= 0;
+		if(experience>o.experience) {
+			a= 1;
+		}else if(experience<o.experience) {
+			a= -1;
+		}else {
+			if(kills>o.kills) {
+				a= 1;
+			}else if(kills<o.kills) {
+				a= -1;
+			}else {
+				if(ping>o.ping) {
+					a= 1;
+				}else if(ping<o.ping) {
+					a= -1;
+				}else {
+					a= 0;
+				}
+			}
+		}
+		return a;
 	}
 	
 }
