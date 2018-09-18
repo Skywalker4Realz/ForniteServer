@@ -17,7 +17,7 @@
                   <TableView fx:id="tablePlayers" prefHeight="400.0" prefWidth="1000.0">
                     <columns>
                       <TableColumn fx:id="colNickname" prefWidth="126.0" text="NICKNAME" />
-                      <TableColumn fx:id="colLevel" prefWidth="120.0" text="NIVEL" />
+                      <TableColumn fx:id="colLevel" prefWidth="120.0" text="EXPERIENCIA" />
                         <TableColumn fx:id="colKills" prefWidth="143.0" text="KILLS" />
                         <TableColumn fx:id="colPlatform" prefWidth="143.0" text="PLATFORM" />
                         <TableColumn fx:id="colPing" prefWidth="143.0" text="PING" />

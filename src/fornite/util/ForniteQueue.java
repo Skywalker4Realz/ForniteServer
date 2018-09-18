@@ -38,4 +38,10 @@ public class ForniteQueue<E> {
 		}
 		else {throw new QueueException("QueueException on front: queue empty");}
 		}
+
+	public ForniteNode<E> getLast() {
+		return last;
+	}
+	
+	
 }

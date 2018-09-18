@@ -57,6 +57,31 @@ public class ForniteGlobalServer {
 		}
 	}
 
+	
+	public ForniteList<Player> globalList(){
+		
+		ForniteList<Player> global = new ForniteList<Player>();
+
+		ForniteList<Player> america = servers.get(0).getPlayers();
+		ForniteList<Player> europe = servers.get(1).getPlayers();
+		ForniteList<Player> africa = servers.get(2).getPlayers();
+		ForniteList<Player> asia = servers.get(3).getPlayers();
+		
+		for (int i = 0; i < america.size(); i++) {
+			global.add(america.get(i));
+		}for (int i = 0; i < europe.size(); i++) {
+			global.add(europe.get(i));
+		}for (int i = 0; i < africa.size(); i++) {
+			global.add(africa.get(i));
+		}for (int i = 0; i < asia.size(); i++) {
+			global.add(asia.get(i));
+		}
+		
+		return global;
+
+	}
+	
+	
 	public ForniteList<Server> getServers() {
 		return servers;
 	}

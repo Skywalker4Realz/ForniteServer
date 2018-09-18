@@ -18,11 +18,11 @@ public class ValentinesMode {
 
 	private int municion;
 	private ForniteStack<String> bagpack;
-	private Hashtable<String, Integer> weapons;
+	private ForniteHashTable<String, Integer> weapons;
 	
 	public ValentinesMode() {
 		bagpack = new ForniteStack<String>();
-		weapons = new Hashtable<String, Integer>();
+		weapons = new ForniteHashTable<String, Integer>();
 		
 		bagpack.push(PICK);
 		setWeapons();
@@ -48,7 +48,10 @@ public class ValentinesMode {
 	public void makeShot() {
 		
 		if(municion==0 && !bagpack.top().equals(PICK)) {
-			bagpack.pop();  municion = 20;
+			bagpack.pop(); 
+			if(!bagpack.top().equals(PICK)) {
+				municion = 20;
+			}
 		}else if(!bagpack.top().equals(PICK)) {
 			municion--;
 		}
@@ -60,7 +63,7 @@ public class ValentinesMode {
 	}
 
 
-	public Hashtable<String, Integer> getWeapons() {
+	public ForniteHashTable<String, Integer> getWeapons() {
 		return weapons;
 	}
 	

@@ -1,18 +1,48 @@
 package model;
 
-public class Player {
+public class Player implements Comparable<Player>{
 
+	//Zone constants
+	public static final int AMERICA = 1;
+	public static final int AFRICA = 2;
+	public static final int EUROPE = 3;
+	public static final int ASIA = 1;
+	
+	//Platform constants
+	public static final int PLAYSTATION = 1;
+	public static final int XBOX = 2;
+	public static final int PC = 3;
+	
+	private String nickname;
+	private int latitude;
+	private int longitude;
+	private int zone;
+	private double kills;
+	private double experience;
+	private String platform;
+	private double ping;
+	
 	public Player(String nickname, int latitude, int longitude, double skill, double experience, int platform,
 			double ping) {
 		super();
 		this.nickname = nickname;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.skill = skill;
+		this.kills = skill;
 		this.experience = experience;
-		this.platform = platform;
+		setPlatform(platform);
 		this.ping = ping;
 		setZone();
+	}
+	
+	public void setPlatform(int p) {
+		if(p == PLAYSTATION) {
+			platform = "Playstation";
+		}else if(p == XBOX) {
+			platform = "Xbox";
+		}else {
+			platform = "PC";
+		}
 	}
 	
 	public void setZone()
@@ -34,25 +64,6 @@ public class Player {
 			zone = ASIA;
 		}
 	}
-	//Zone constants
-	public static final int AMERICA = 1;
-	public static final int AFRICA = 2;
-	public static final int EUROPE = 3;
-	public static final int ASIA = 1;
-	
-	//Platform constants
-	public static final int PS4 = 1;
-	public static final int XBOX = 2;
-	public static final int PC = 3;
-	
-	private String nickname;
-	private int latitude;
-	private int longitude;
-	private int zone;
-	private double skill;
-	private double experience;
-	private int platform;
-	private double ping;
 	
 	public String getNickname() {
 		return nickname;
@@ -62,20 +73,27 @@ public class Player {
 		return zone;
 	}
 
-	public double getSkill() {
-		return skill;
+	public double getKills() {
+		return kills;
 	}
 
 	public double getExperience() {
 		return experience;
 	}
 
-	public int getPlatform() {
+	public String getPlatform() {
 		return platform;
 	}
 
+	
 	public double getPing() {
 		return ping;
+	}
+
+	@Override
+	public int compareTo(Player o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

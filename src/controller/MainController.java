@@ -24,8 +24,19 @@ import model.Server;
 
 public class MainController implements Initializable {
 	
-	private Main app;
+	private ForniteGlobalServer forniteServer;
 	
+	
+    @FXML
+	RankingController ranking;
+    
+    @FXML
+	MatchController match;
+    
+    @FXML
+	PlatformModeController platform;
+    
+   	
     @FXML
     private Button btnRanking;
 
@@ -40,6 +51,7 @@ public class MainController implements Initializable {
 
     @FXML
     private Button btnBack;
+    
 
     @FXML
     void exitApp(ActionEvent event) {
@@ -48,35 +60,57 @@ public class MainController implements Initializable {
 
     @FXML
     void startMatch(ActionEvent event) throws IOException {
-    	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/resources/GameFrame.fxml"));
-		Scene scene = new Scene(root);
-		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		window.show();
+    	 FXMLLoader loader = new FXMLLoader();
+         loader.setLocation(getClass().getResource("/resources/GameFrame.fxml"));
+         Parent p = loader.load();
+         Scene scene = new Scene(p);
+         //access the controller and call a method
+         match = loader.getController();
+         match.init(this);
+         
+         //This line gets the Stage information
+         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+         
+         window.setScene(scene);
+         window.show();
+         
+         loadPlayers();
     }
 
     @FXML
     void startRanking(ActionEvent event) throws IOException {
     	
-    	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/resources/RankingFrame.fxml"));
-		Scene scene = new Scene(root);
-		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		window.show();
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/resources/RankingFrame.fxml"));
+        Parent p = loader.load();
+        Scene scene = new Scene(p);
+        //access the controller and call a method
+        ranking = loader.getController();
+        ranking.init(this);
+        
+        //This line gets the Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(scene);
+        window.show();
 			
     }
 
     @FXML
     void startPlatformMode(ActionEvent event) throws IOException {
-    	Parent root;
-		root = FXMLLoader.load(getClass().getResource("/resources/PlatformModeFrame.fxml"));
-		Scene scene = new Scene(root);
-		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		//window.initStyle(StageStyle.TRANSPARENT);
-		window.show();
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/resources/PlatformModeFrame.fxml"));
+        Parent p = loader.load();
+        Scene scene = new Scene(p);
+        //access the controller and call a method
+        platform = loader.getController();
+        platform.init(this);
+        
+        //This line gets the Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(scene);
+        window.show();
     }
 
     @FXML
@@ -99,12 +133,27 @@ public class MainController implements Initializable {
 		btnPlatform.setFocusTraversable(false);
 		btnValentine.setFocusTraversable(false);
 		
-		
-		ForniteGlobalServer s = new ForniteGlobalServer();
-		s.uploadGlobalPlayers();
-		ForniteList<Server> o = s.getServers();
+		forniteServer = new ForniteGlobalServer();
+		forniteServer.uploadGlobalPlayers();	
 		
 	}
-    	
+	
+	
+	public void loadPlayers(){
+		ForniteList<Player> players = forniteServer.globalList();
+		
+		for (int i = 0; i < players.size(); i++) {
+			match.getData().add(players.get(i));
+		}
+		
+	}
+
+
+	public ForniteGlobalServer getForniteServer() {
+		return forniteServer;
+	}
+
+	
+	
 
 }
