@@ -92,6 +92,7 @@ public class Player implements Comparable<Player>{
 
 	@Override
 	public int compareTo(Player o) {
+<<<<<<< HEAD
 		int a= 0;
 		if(experience>o.experience) {
 			a= 1;
@@ -113,6 +114,10 @@ public class Player implements Comparable<Player>{
 			}
 		}
 		return a;
+=======
+		// TODO Auto-generated method stub
+		return 0;
+>>>>>>> 9395fbe190dfb8297b04ee89bbb64992a2157b21
 	}
 	
 }
