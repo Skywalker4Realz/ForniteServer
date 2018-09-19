@@ -1,6 +1,10 @@
 package fornite.util;
 
-public class ForniteList<T> implements IForniteList<T> {
+import java.util.List;
+
+import model.Player;
+
+public class ForniteList<T> implements IForniteList<T>  {
 
 	private Object[] array;
 	private int size;
@@ -50,10 +54,19 @@ public class ForniteList<T> implements IForniteList<T> {
 			throw new IndexOutOfBoundsException();
 		}
 	}
+	
+	
+	public void set(int i, T p) throws IndexOutOfBoundsException
+	{
+			array[i] = p;	
+	}
+	
 	@Override
 	public int size()
 	{
 		return size;
 	}
+	
+
 
 }

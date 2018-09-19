@@ -1,7 +1,11 @@
 package controller;
 
+import java.awt.List;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
@@ -139,11 +143,13 @@ public class MainController implements Initializable {
 	}
 	
 	
-	public void loadPlayers(){
-		ForniteList<Player> players = forniteServer.globalList();
+	public <T> void loadPlayers(){
+		
+		forniteServer.getServers().get(4).sort();
+		ForniteList<Player> players = forniteServer.getServers().get(4).getPlayers();
 		
 		for (int i = 0; i < players.size(); i++) {
-			match.getData().add(players.get(i));
+			match.getData().add( players.get(i));
 		}
 		
 	}

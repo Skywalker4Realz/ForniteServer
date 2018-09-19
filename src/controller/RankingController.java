@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import fornite.util.ForniteList;
+import fornite.util.ForniteQueue;
+import fornite.util.QueueException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -85,21 +88,59 @@ public class RankingController implements Initializable {
 
     @FXML
     void showAFRRanking(ActionEvent event) {
+    	main.getForniteServer().getServers().get(2).putRanking();
+    	data.removeAll(data);
+    	tableRanking.getSortOrder().add(colKills);
+    	ForniteQueue<Player> ranking = main.getForniteServer().getServers().get(2).getRanking();
+    	while(!ranking.isEmpty()) {
+    		try {
+				data.add((Player) ranking.dequeue());
+			} catch (QueueException e) {
+			}
+    	}
     }
 
     @FXML
     void showEURanking(ActionEvent event) {
-
+    	main.getForniteServer().getServers().get(1).putRanking();
+    	data.removeAll(data);
+    	tableRanking.getSortOrder().add(colKills);
+    	ForniteQueue<Player> ranking = main.getForniteServer().getServers().get(1).getRanking();
+    	while(!ranking.isEmpty()) {
+    		try {
+				data.add((Player) ranking.dequeue());
+			} catch (QueueException e) {
+			}
+    	}
     }
 
     @FXML
     void showLANRanking(ActionEvent event) {
-
+    	main.getForniteServer().getServers().get(0).putRanking();
+    	data.removeAll(data);
+    	tableRanking.getSortOrder().add(colKills);
+    	
+    	ForniteQueue<Player> ranking = main.getForniteServer().getServers().get(0).getRanking();
+    	while(!ranking.isEmpty()) {
+    		try {
+				data.add((Player) ranking.dequeue());
+			} catch (QueueException e) {
+			}
+    	}
     }
 
     @FXML
-    void showNSRanking(ActionEvent event) {
-
+    void showAsiaRanking(ActionEvent event) {
+    	main.getForniteServer().getServers().get(3).putRanking();
+    	data.removeAll(data);
+    	tableRanking.getSortOrder().add(colKills);
+    	ForniteQueue<Player> ranking = main.getForniteServer().getServers().get(3).getRanking();
+    	while(!ranking.isEmpty()) {
+    		try {
+				data.add((Player) ranking.dequeue());
+			} catch (QueueException e) {
+			}
+    	}
     }
 
 	@Override
@@ -107,15 +148,16 @@ public class RankingController implements Initializable {
 		
 		data = FXCollections.observableArrayList();
 		
-		data.add(new Player("xx", 033, 0333, 033, 033, 033, 033));
 		colNickname.setCellValueFactory(new PropertyValueFactory<Player, String>("Nickname"));
-		colLevel.setCellValueFactory(new PropertyValueFactory<Player, String>("Level"));
+		colLevel.setCellValueFactory(new PropertyValueFactory<Player, String>("Experience"));
 		colKills.setCellValueFactory(new PropertyValueFactory<Player, String>("Kills"));
+		colKills.setSortable(true);
 		colPing.setCellValueFactory(new PropertyValueFactory<Player, String>("Ping"));
 		colPlatform.setCellValueFactory(new PropertyValueFactory<Player, String>("Platform"));
 
 
 		tableRanking.setItems(data);
+		
 		
 	}
 

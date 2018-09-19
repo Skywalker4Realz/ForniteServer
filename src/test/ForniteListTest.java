@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import fornite.util.ForniteList;
+import model.Player;
 
 class ForniteListTest {
 	
@@ -96,5 +97,36 @@ class ForniteListTest {
 		
 		escenario3();
 		assertEquals(0, list.size());
+	}
+	
+	@Test
+	void prueba()
+	{
+		ForniteList<Player> lista = new ForniteList<>();
+		for (int i = 8; i > -1; i--) {
+			Player p = new Player(""+i, i, i, i, i, i, i);
+		}
+		
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getKills());
+		}
+		
+		int n = lista.size();
+        for (int i=1; i<n; ++i)
+        {
+            Player key = lista.get(i);
+            int j = i-1;
+            
+            while (j>=0 && lista.get(i).compareTo(key) > 0)
+            {
+                lista.set(j+1, lista.get(j));
+                j = j-1;
+            }
+            lista.set(j+1, key);
+        }
+        
+        for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getKills());
+		}
 	}
 }
