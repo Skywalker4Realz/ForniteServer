@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * This class is responsible for modeling the main server of the Fornite game 
+ * depending on its region / continent.
+ *@author: Nicolas Martinez  Cristian Molina  Juan Manuel Castillo.
+ *@version: 23/08/2018/A
+ */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +24,10 @@ public class ForniteGlobalServer {
 
 	private ForniteList<Server> servers;
 	
+	/**
+	 * This method is responsible for initializing the forniteGlobalServer.
+	 */
+	
 	public ForniteGlobalServer() {
 		servers = new ForniteList<Server>();
 		servers.add(new Server(AMERICA));
@@ -24,6 +35,11 @@ public class ForniteGlobalServer {
 		servers.add(new Server(AFRICA));
 		servers.add(new Server(ASIA));
 	}
+	
+	/**
+	 * This method is responsible for loading a txt file which contains the players 
+	 * which is read for the operation of the main server
+	 */
 	
 	
 	public void uploadGlobalPlayers() {
@@ -57,6 +73,12 @@ public class ForniteGlobalServer {
 		}
 	}
 
+	/**
+	 * This method is in charge of once obtained the players divided into zones. Collect them all in
+	 * a single list, interpreted as the main list or main server.
+	 *  
+	 *  @return global of type FortniteList with players from all regions. 
+	 */
 	
 	public ForniteList<Player> globalList(){
 		
@@ -81,6 +103,11 @@ public class ForniteGlobalServer {
 
 	}
 	
+	/**
+	 * This method is responsible for obtaining the servers added to the main list.
+	 *  
+	 *  @return servers of type FortniteList with the region servers.
+	 */
 	
 	public ForniteList<Server> getServers() {
 		return servers;
