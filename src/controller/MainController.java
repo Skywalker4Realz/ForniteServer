@@ -145,19 +145,11 @@ public class MainController implements Initializable {
 	
 	public <T> void loadPlayers(){
 		
-		Collection<Player>  s= new ArrayList<Player>();
-		ForniteList<Player> players = forniteServer.globalList();
+		forniteServer.getServers().get(4).sort();
+		ForniteList<Player> players = forniteServer.getServers().get(4).getPlayers();
 		
 		for (int i = 0; i < players.size(); i++) {
-			s.add(players.get(i));
-		}
-		Collections.sort((java.util.List<Player>) s);
-		
-//				.quicksort(forniteServer.globalList(), 
-//				0, forniteServer.globalList().size()-1);
-		
-		for (int i =  s.size()-1; i > -1; i--) {
-			match.getData().add(((ArrayList<Player>) s).get(i));
+			match.getData().add( players.get(i));
 		}
 		
 	}

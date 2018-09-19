@@ -31,10 +31,10 @@
       </ScrollPane>
       <VBox prefHeight="614.0" prefWidth="268.0">
          <children>
-            <Button fx:id="btnLAN" mnemonicParsing="false" onAction="#showLANRanking" prefHeight="121.0" prefWidth="268.0" text="LATINOAMERICA (LAN)" />
+            <Button fx:id="btnLAN" mnemonicParsing="false" onAction="#showLANRanking" prefHeight="121.0" prefWidth="268.0" text="AMERICA (LAN Y NS)" />
             <Button fx:id="btnEU" mnemonicParsing="false" onAction="#showEURanking" prefHeight="146.0" prefWidth="268.0" text="EUROPA (EU)" />
             <Button fx:id="btnAFR" mnemonicParsing="false" onAction="#showAFRRanking" prefHeight="148.0" prefWidth="268.0" text="AFRICA (AFR)" />
-            <Button fx:id="btnNS" mnemonicParsing="false" onAction="#showNSRanking" prefHeight="147.0" prefWidth="268.0" text="NORTEAMERICA (NS)" />
+            <Button fx:id="btnNS" mnemonicParsing="false" onAction="#showAsiaRanking" prefHeight="147.0" prefWidth="268.0" text="ASIA (AS)" />
             <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToMenu" prefHeight="14.0" prefWidth="268.0" text="BACK" />
          </children>
       </VBox>

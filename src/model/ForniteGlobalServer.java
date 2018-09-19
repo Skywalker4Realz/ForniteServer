@@ -14,6 +14,8 @@ public class ForniteGlobalServer {
 	public static final int EUROPE = 2;
 	public static final int AFRICA = 3;
 	public static final int ASIA = 4;
+	public static final int GLOBAL = 5;
+
 
 	private ForniteList<Server> servers;
 	
@@ -23,6 +25,9 @@ public class ForniteGlobalServer {
 		servers.add(new Server(EUROPE));
 		servers.add(new Server(AFRICA));
 		servers.add(new Server(ASIA));
+		servers.add(new Server(GLOBAL));
+		uploadGlobalPlayers();
+		globalList();
 	}
 	
 	
@@ -58,7 +63,7 @@ public class ForniteGlobalServer {
 	}
 
 	
-	public ForniteList<Player> globalList(){
+	public void globalList(){
 		
 		ForniteList<Player> global = new ForniteList<Player>();
 
@@ -77,8 +82,7 @@ public class ForniteGlobalServer {
 			global.add(asia.get(i));
 		}
 		
-		return global;
-
+		servers.get(4).setPlayers(global);
 	}
 	
 	

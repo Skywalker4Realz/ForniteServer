@@ -21,6 +21,16 @@ public class Server {
 		players.add(p);
 	}
 	
+	
+	public void putRanking() {
+	
+		sort();
+		for (int i = players.size()-1; i > -1; i--) {
+			ranking.enqueue(players.get(i));
+		}
+		
+	}
+	
 	public void sort()
 	{
 		Player[] p = new Player[players.size()];
@@ -74,6 +84,17 @@ public class Server {
 	public ForniteList<Player> getPlayers() {
 		return players;
 	}
+
+
+	public ForniteQueue<Player> getRanking() {
+		return ranking;
+	}
+
+
+	public void setPlayers(ForniteList<Player> players) {
+		this.players = players;
+	}
+	
 	
 	
 }
