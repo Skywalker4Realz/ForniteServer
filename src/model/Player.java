@@ -8,8 +8,11 @@ package model;
  *@version: 20/09/2018/A
  */
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 82a63028aa1449b9bf64288dcc31d610b876ed85
 public class Player implements Comparable<Player>{
 
 
@@ -152,6 +155,17 @@ public class Player implements Comparable<Player>{
 		return a;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Player [nickname=" + nickname + ", kills=" + kills + ", experience=" + experience + ", platform="
+				+ platform + ", ping=" + ping + "]";
+	}
+	
+	
 	
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 82a63028aa1449b9bf64288dcc31d610b876ed85
