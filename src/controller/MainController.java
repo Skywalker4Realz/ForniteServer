@@ -19,7 +19,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.ForniteGlobalServer;
@@ -97,6 +99,12 @@ public class MainController implements Initializable {
         
         window.setScene(scene);
         window.show();
+        
+//        Alert alert = new Alert(AlertType.INFORMATION);
+//		alert.setTitle("Inicialmente el ranking esta ordenado por kill");
+//		alert.setHeaderText(null);
+//		alert.setContentText("Presione en el encabezado de la columna requerida para ordenar por preferencia");
+//		alert.showAndWait();
 			
     }
 
