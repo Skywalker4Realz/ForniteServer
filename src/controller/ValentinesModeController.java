@@ -45,56 +45,56 @@ public class ValentinesModeController implements Initializable{
 	    @FXML
 	    void chooseM4(MouseEvent event) {
 	    	mode.putWeapon(mode.M4, "M4");
-			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top()));
+			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top().getImg()));
 			ImageView a = new ImageView(image);
 			a.setFitHeight(150);
 			a.setFitWidth(150);
 			slot1.setGraphic(a);
-			txtMunicion.setText(""+mode.getMunicion());
+			txtMunicion.setText(""+mode.getBagpack().top().getAmmo());
 	    }
 
 	    @FXML
 	    void chooseMinigun(MouseEvent event) {
 	    	mode.putWeapon(mode.MINUGUN, "MINIGUN");
-			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top()));
+			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top().getImg()));
 			ImageView a = new ImageView(image);
 			a.setFitHeight(150);
 			a.setFitWidth(150);
 			slot1.setGraphic(a);
-			txtMunicion.setText(""+mode.getMunicion());
+			txtMunicion.setText(""+mode.getBagpack().top().getAmmo());
 	    }
 
 	    @FXML
 	    void choosePistol(MouseEvent event) {
 	    	mode.putWeapon(mode.PISTOL, "PISTOL");
-			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top()));
+			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top().getImg()));
 			ImageView a = new ImageView(image);
 			a.setFitHeight(150);
 			a.setFitWidth(150);
 			slot1.setGraphic(a);
-			txtMunicion.setText(""+mode.getMunicion());
+			txtMunicion.setText(""+mode.getBagpack().top().getAmmo());
 	    }
 
 	    @FXML
 	    void chooseRocket(MouseEvent event) {
 	    	mode.putWeapon(mode.ROCKET, "ROCKET");
-			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top()));
+			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top().getImg()));
 			ImageView a = new ImageView(image);
 			a.setFitHeight(150);
 			a.setFitWidth(150);
 			slot1.setGraphic(a);
-			txtMunicion.setText(""+mode.getMunicion());
+			txtMunicion.setText(""+mode.getBagpack().top().getAmmo());
 	    }
 
 	    @FXML
 	    void chooseSCAR(MouseEvent event) {
 	    	mode.putWeapon(mode.SCAR, "SCAR");
-			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top()));
+			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top().getImg()));
 			ImageView a = new ImageView(image);
 			a.setFitHeight(150);
 			a.setFitWidth(150);
 			slot1.setGraphic(a);
-			txtMunicion.setText(""+mode.getMunicion());
+			txtMunicion.setText(""+mode.getBagpack().top().getAmmo());
 	    }
 	    
 	    
@@ -102,24 +102,24 @@ public class ValentinesModeController implements Initializable{
 	    @FXML
 	    void chooseShotGun(MouseEvent event) {
 	    	mode.putWeapon(mode.SHOTGUN, "SHOTGUN");
-			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top()));
+			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top().getImg()));
 			ImageView a = new ImageView(image);
 			a.setFitHeight(150);
 			a.setFitWidth(150);
 			slot1.setGraphic(a);
-			txtMunicion.setText(""+mode.getMunicion());
+			txtMunicion.setText(""+mode.getBagpack().top().getAmmo());
 	    }
 
 	   
 	    @FXML
 	    void makeShot(ActionEvent event) {
 	    	mode.makeShot();;
-			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top()));
+			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top().getImg()));
 			ImageView a = new ImageView(image);
 			a.setFitHeight(150);
 			a.setFitWidth(150);
 			slot1.setGraphic(a);
-			txtMunicion.setText(""+mode.getMunicion());
+			txtMunicion.setText(""+mode.getBagpack().top().getAmmo());
 	    }
 	    
 	    @FXML
@@ -137,7 +137,7 @@ public class ValentinesModeController implements Initializable{
 			
 			mode = new ValentinesMode();
 	    	System.out.println(mode.getBagpack().top());
-			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top()));
+			Image image = new Image(getClass().getResourceAsStream(mode.getBagpack().top().getImg()));
 			ImageView a = new ImageView(image);
 			a.setFitHeight(150);
 			a.setFitWidth(150);

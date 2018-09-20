@@ -24,7 +24,7 @@ public class ValentinesMode {
 
 
 	private int municion;
-	private ForniteStack<String> bagpack;
+	private ForniteStack<Weapon> bagpack;
 	private ForniteHashTable<String, Integer> weapons;
 	
 	/**
@@ -32,11 +32,11 @@ public class ValentinesMode {
 	 */
 	
 	public ValentinesMode() {
-		bagpack = new ForniteStack<String>();
+		bagpack = new ForniteStack<Weapon>();
 		weapons = new ForniteHashTable<String, Integer>();
 		
-		bagpack.push(PICK);
 		setWeapons();
+		bagpack.push(new Weapon(PICK, weapons.get("PICK")));
 	}
 	
 	/**
@@ -63,8 +63,7 @@ public class ValentinesMode {
 	 */
 	
 	public void putWeapon(String w, String k) {
-		bagpack.push(w);
-		municion = weapons.get(k);
+		bagpack.push(new Weapon(w, weapons.get(k).intValue()));
 	}
 	
 	
@@ -75,20 +74,20 @@ public class ValentinesMode {
 	
 	public void makeShot() {
 		
-		if(municion==0 && !bagpack.top().equals(PICK)) {
+		if(bagpack.top().getAmmo() ==0 && !bagpack.top().equals(PICK)) {
 			bagpack.pop(); 
 			if(!bagpack.top().equals(PICK)) {
-				municion = 20;
+				bagpack.top().setAmmo(bagpack.top().getAmmo()-1);
 			}
 		}else if(!bagpack.top().equals(PICK)) {
-			municion--;
+			bagpack.top().setAmmo(bagpack.top().getAmmo()-1);
 		}
 	}
 
 
 	
 	
-	public ForniteStack<String> getBagpack() {
+	public ForniteStack<Weapon> getBagpack() {
 		return bagpack;
 	}
 
@@ -105,3 +104,7 @@ public class ValentinesMode {
 	
 	
 }
+
+
+
+
