@@ -116,5 +116,13 @@ public class Player implements Comparable<Player>{
 		return a;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Player [nickname=" + nickname + ", kills=" + kills + ", experience=" + experience + ", platform="
+				+ platform + ", ping=" + ping + "]";
+	}
+	
+	
 	
 }

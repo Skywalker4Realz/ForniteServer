@@ -155,9 +155,8 @@ public class RankingController implements Initializable {
 		colPing.setCellValueFactory(new PropertyValueFactory<Player, String>("Ping"));
 		colPlatform.setCellValueFactory(new PropertyValueFactory<Player, String>("Platform"));
 
-
-		tableRanking.setItems(data);
 		
+		tableRanking.setItems(data);
 		
 	}
 

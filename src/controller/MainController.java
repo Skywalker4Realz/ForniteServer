@@ -19,6 +19,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -92,12 +94,19 @@ public class MainController implements Initializable {
         ranking = loader.getController();
         ranking.init(this);
         
+        ranking.showLANRanking(event);
         //This line gets the Stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         
         window.setScene(scene);
         window.show();
-			
+        
+        Alert a = new Alert(AlertType.INFORMATION);
+        a.setContentText("INICIAMELNTE LOS RANKINGS SON POR KILLS, PERSIONE EN LA COLUMNA REQUERIDA"
+        		+ "PARA ORDENAR");
+        a.setTitle("FORNITE");
+		a.show();
+		
     }
 
     @FXML
