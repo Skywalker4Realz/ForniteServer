@@ -1,6 +1,15 @@
 package model;
 
+
+/**
+ * This class is responsible for the modeling of a player based on his name, skill, platform,
+ * experience, among others, for the use of other services of the program.
+ *@author: Nicolas Martinez  Cristian Molina  Juan Manuel Castillo.
+ *@version: 20/09/2018/A
+ */
+
 public class Player implements Comparable<Player>{
+
 
 	//Zone constants
 	public static final int AMERICA = 1;
@@ -22,6 +31,18 @@ public class Player implements Comparable<Player>{
 	private String platform;
 	private double ping;
 	
+	/**
+	 * This method is in charge of giving construction to a new generation of values
+	 *  which are the characteristics of a player.
+	 * 
+	 * @param nickname of type String for the identification of the player
+	 * @param latitude of type int for the variance
+	 * @param longitude of type int for the variance
+	 * @param skill of type double with the player's technique/skill
+	 * @param experience of type double with the expertise of the player
+	 * @param platform of type int with the number indicated by the player's platform
+	 */
+	
 	public Player(String nickname, int latitude, int longitude, double skill, double experience, int platform,
 			double ping) {
 		super();
@@ -35,6 +56,12 @@ public class Player implements Comparable<Player>{
 		setZone();
 	}
 	
+	/**
+	 * This method is responsible for establishing the platform in which the 
+	 * player is located
+	 * @param p of type int with the number indicated by the player's platform.
+	 */
+	
 	public void setPlatform(int p) {
 		if(p == PLAYSTATION) {
 			platform = "Playstation";
@@ -44,6 +71,11 @@ public class Player implements Comparable<Player>{
 			platform = "PC";
 		}
 	}
+	
+	/**
+	 * This method is responsible for establishing the area / region 
+	 * in which the player is located
+	 */
 	
 	public void setZone()
 	{
@@ -64,6 +96,8 @@ public class Player implements Comparable<Player>{
 			zone = ASIA;
 		}
 	}
+	
+	
 	
 	public String getNickname() {
 		return nickname;

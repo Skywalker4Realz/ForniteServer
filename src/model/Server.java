@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * This class is responsible for the modeling of a game gathered by 100 players 
+ * for x platform depending on different factors such as ranking.
+ *@author: Nicolas Martinez  Cristian Molina  Juan Manuel Castillo.
+ *@version: 20/09/2018/A
+ */
+
 import fornite.util.ForniteList;
 import fornite.util.ForniteQueue;
 
@@ -9,12 +16,19 @@ public class Server {
 	private ForniteList<Player> players;
 	private ForniteQueue<Player> ranking;
 	
+	/**
+	 * This method is responsible for initializing the Server.
+	 * 
+	 * @param id of type int with the server´s identification.
+	 */
+	
 	
 	public Server(int id) {
 		this.id = id;
 		players = new ForniteList<Player>();
 		ranking = new ForniteQueue<Player>();
 	}
+	
 	
 	
 	public void addPlayer(Player p) {
