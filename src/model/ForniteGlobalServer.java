@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 
 import fornite.util.ForniteList;
 
@@ -25,6 +26,7 @@ public class ForniteGlobalServer {
 
 
 	private ForniteList<Server> servers;
+	private double globalDesviation;
 	
 	/**
 	 * This method is responsible for initializing the forniteGlobalServer.
@@ -39,6 +41,7 @@ public class ForniteGlobalServer {
 		servers.add(new Server(GLOBAL));
 		uploadGlobalPlayers();
 		globalList();
+		globalDesviation = getStdDev(servers.get(4).getPlayers());
 	}
 	
 	/**
@@ -117,4 +120,74 @@ public class ForniteGlobalServer {
 		return servers;
 	}
 	
+	
+	public ForniteList<Player> findMatch() {
+		ForniteList<Player> match = new ForniteList<Player>();
+		
+		servers.get(4).sort();
+		ForniteList<Player> global = servers.get(4).getPlayers();
+		
+		
+		double stdDesviationGlobal = getStdDev(global);
+		
+		Random rnd = new Random();
+		int x = (int)(rnd.nextDouble() * 500);
+		
+		System.out.println(x);
+		for (int i = x; i < global.size() && i <100; i++) {
+			match.add(global.get(i));
+		}
+		
+		double stdDesviationMatch = getStdDev(match);
+		
+		if(stdDesviationMatch<(stdDesviationGlobal)*2) {
+		return match;}
+		else {	
+			return findMatch();
+		}
+	}
+	
+	
+	public ForniteList<Player> findMatchPlataformMode(String platform, int num){
+
+		ForniteList<Player> match = new ForniteList<Player>();
+		servers.get(4).sort();
+		ForniteList<Player> global = servers.get(4).getPlayers();
+				
+		Random rnd = new Random();
+		int x = (int)(rnd.nextDouble() * 100);
+		
+		for (int i = 0; i < global.size() && match.size() < num; i++) {
+			if(global.get(i).getPlatform().equalsIgnoreCase(platform)) {
+			match.add(global.get(i));}
+		}
+		
+		return match;
+	}
+	
+
+	public double getMean(ForniteList<Player> data) {
+        double sum = 0.0;
+        for(int i=0; i<data.size(); i++ )
+            sum += data.get(i).getPing();
+        return sum/data.size();
+    }
+
+    public double getVariance(ForniteList<Player> data) {
+        double mean = getMean(data);
+        double temp = 0;
+        for(int i=0; i<data.size(); i++ )
+            temp += (data.get(i).getPing()-mean)*(data.get(i).getPing()-mean);
+        return temp/(data.size()-1);
+    }
+
+    public double getStdDev(ForniteList<Player> data) {
+        return Math.sqrt(getVariance(data));
+    }
+
+	public double getGlobalDesviation() {
+		return globalDesviation;
+	}
+	
+    
 }

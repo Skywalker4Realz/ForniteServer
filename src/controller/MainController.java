@@ -102,10 +102,9 @@ public class MainController implements Initializable {
         window.setScene(scene);
         window.show();
         
-
         Alert a = new Alert(AlertType.INFORMATION);
         a.setContentText("INICIAMELNTE LOS RANKINGS SON POR KILLS, PERSIONE EN LA COLUMNA REQUERIDA"
-        		+ "PARA ORDENAR");
+        		+ " PARA ORDENAR");
         a.setTitle("FORNITE");
 		a.show();
 		
@@ -156,11 +155,12 @@ public class MainController implements Initializable {
 	
 	public <T> void loadPlayers(){
 		
-		forniteServer.getServers().get(4).sort();
+//		forniteServer.getServers().get(4).sort();
 		ForniteList<Player> players = forniteServer.getServers().get(4).getPlayers();
 		
-		for (int i = 0; i < players.size(); i++) {
+		for (int i = players.size()-1; i > -1 ; i--) {
 			match.getData().add( players.get(i));
+			System.out.println(players.get(i).toString());
 		}
 		
 	}

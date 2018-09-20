@@ -6,17 +6,24 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlatformModeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlatformModeController">
    <children>
+      <ImageView fitHeight="662.0" fitWidth="1097.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@omega_fortnite___wallpaper_by_boniito24-dcb1xhc.jpg" />
+         </image>
+      </ImageView>
       <ScrollPane layoutY="145.0" prefHeight="400.0" prefWidth="1000.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="tablePlayers" prefHeight="400.0" prefWidth="1000.0">
+                  <TableView fx:id="tablePlayers" prefHeight="400.0" prefWidth="1000.0" stylesheets="@../application/application.css">
                     <columns>
                       <TableColumn fx:id="colNickname" prefWidth="75.0" text="NICKNAME" />
                       <TableColumn fx:id="colLevel" prefWidth="75.0" text="NIVEL" />
@@ -32,16 +39,14 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Button fx:id="btnBack" layoutX="425.0" layoutY="555.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Button fx:id="btnMatch" layoutX="721.0" layoutY="54.0" mnemonicParsing="false" onAction="#findMatch" prefHeight="52.0" prefWidth="250.0" text="ENCONTRAR PARTIDA">
+      <Button fx:id="btnBack" layoutX="425.0" layoutY="555.0" mnemonicParsing="false" onAction="#goBack" stylesheets="@../application/application.css" text="Back" />
+      <Button fx:id="btnMatch" layoutX="721.0" layoutY="54.0" mnemonicParsing="false" onAction="#findMatch" prefHeight="52.0" prefWidth="250.0" stylesheets="@../application/application.css" text="ENCONTRAR PARTIDA">
          <font>
             <Font size="27.0" />
          </font>
       </Button>
       <AnchorPane layoutX="3.0" prefHeight="140.0" prefWidth="718.0">
          <children>
-            <ComboBox fx:id="comboPlatform" layoutX="83.0" layoutY="78.0" prefHeight="37.0" prefWidth="150.0" promptText="Elija" />
-            <Spinner fx:id="spnNumber" layoutX="444.0" layoutY="78.0" prefHeight="20.0" prefWidth="150.0" />
             <Text layoutX="334.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CANTIDAD DE JUGADORES" textAlignment="CENTER" wrappingWidth="369.13671875">
                <font>
                   <Font size="28.0" />
@@ -52,6 +57,8 @@
                   <Font size="28.0" />
                </font>
             </Text>
+            <Spinner fx:id="spnNumber" cache="true" cacheHint="QUALITY" layoutX="444.0" layoutY="78.0" prefHeight="37.0" prefWidth="150.0" />
+            <ComboBox fx:id="comboPlatform" blendMode="ADD" layoutX="83.0" layoutY="78.0" prefHeight="37.0" prefWidth="150.0" promptText="Elija" stylesheets="@../application/application.css" />
          </children>
       </AnchorPane>
    </children>

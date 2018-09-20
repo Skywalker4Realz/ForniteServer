@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
+import fornite.util.ForniteList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,11 +14,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Player;
@@ -27,6 +31,9 @@ public class PlatformModeController implements Initializable{
 
 	
 		MainController main;
+		
+		private ObservableList<Player> data;
+
 
 		@FXML
 	    private TableView<Player> tablePlayers;
@@ -70,13 +77,12 @@ public class PlatformModeController implements Initializable{
 	    	comboPlatform.setItems(options);
 	    	
 	    	
-	    	
-	    	final ObservableList<Player> data = FXCollections.observableArrayList(
+	    	data = FXCollections.observableArrayList(
 				   
 				  
 				);
 			colNickname.setCellValueFactory(new PropertyValueFactory<Player, String>("Nickname"));
-			colLevel.setCellValueFactory(new PropertyValueFactory<Player, String>("Level"));
+			colLevel.setCellValueFactory(new PropertyValueFactory<Player, String>("Experiencia"));
 			colKills.setCellValueFactory(new PropertyValueFactory<Player, String>("Kills"));
 			colPing.setCellValueFactory(new PropertyValueFactory<Player, String>("Ping"));
 			colPlatform.setCellValueFactory(new PropertyValueFactory<Player, String>("Platform"));
@@ -84,12 +90,45 @@ public class PlatformModeController implements Initializable{
 
 			tablePlayers.setItems(data);
 			
+			SpinnerValueFactory<Integer> valueFactory = //
+	                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
+	 
+	        spnNumber.setValueFactory(valueFactory);
+	        
+	        spnNumber.setStyle(null);
+			
 		}
 
 	    @FXML
 	    void findMatch(ActionEvent event) {
+	    	
+	    	data.removeAll(data);
+	    	
+	    	ForniteList<Player> players = null;
+	    	if(comboPlatform.getValue() != null) {
+	    	if(!comboPlatform.getValue().equalsIgnoreCase(comboPlatform.getPromptText()) && spnNumber.getValue() >0) {
+	    
+	    		players = main.getForniteServer().findMatchPlataformMode(comboPlatform.getValue(), spnNumber.getValue());
+	    		for (int i = players.size()-1; i > -1 ; i--) {
+	    			data.add(players.get(i));}
+	    		System.out.println(comboPlatform.getValue());
+	    		
+	    		Alert a = new Alert(AlertType.INFORMATION);
+		        a.setContentText("Se ha creado una partida con las restricciones dadas");
+		        a.setTitle("FORNITE");
+				a.show();
+	    	
+	    	}}else {
+	    		Alert a = new Alert(AlertType.ERROR);
+		        a.setContentText("Seleccione restricciones validas");
+		        a.setTitle("FORNITE");
+				a.show();
+	    		
+	    	}}
+	    	
+	    
+			
 
-	    }
 
 	    @FXML
 	    void goBack(ActionEvent event) throws IOException {

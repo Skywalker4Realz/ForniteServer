@@ -94,6 +94,7 @@ public class RankingController implements Initializable {
     	ForniteQueue<Player> ranking = main.getForniteServer().getServers().get(2).getRanking();
     	while(!ranking.isEmpty()) {
     		try {
+    			System.out.println(ranking.front().toString());
 				data.add((Player) ranking.dequeue());
 			} catch (QueueException e) {
 			}
@@ -134,7 +135,8 @@ public class RankingController implements Initializable {
     	main.getForniteServer().getServers().get(3).putRanking();
     	data.removeAll(data);
     	tableRanking.getSortOrder().add(colKills);
-    	ForniteQueue<Player> ranking = main.getForniteServer().getServers().get(3).getRanking();
+    	ForniteQueue<Player> ranking
+    	= main.getForniteServer().getServers().get(3).getRanking();
     	while(!ranking.isEmpty()) {
     		try {
 				data.add((Player) ranking.dequeue());
