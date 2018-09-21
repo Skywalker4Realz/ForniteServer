@@ -25,7 +25,7 @@ public class LoginController {
 
     @FXML
     void logIn(ActionEvent event) throws IOException {
-    	if(!username.getText().equals("")) {
+    	if(!username.getText().equals("")&&!password.getText().equals("")) {
     		FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/resources/Main.fxml"));
             Parent p = loader.load();
@@ -42,7 +42,7 @@ public class LoginController {
     		Alert alert = new Alert(AlertType.INFORMATION);
     		alert.setTitle("Information Dialog");
     		alert.setHeaderText(null);
-    		alert.setContentText("");
+    		alert.setContentText("Por favor diligencie los datos");
 
     		alert.showAndWait();
 

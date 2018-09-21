@@ -74,12 +74,12 @@ public class ValentinesMode {
 	
 	public void makeShot() {
 		
-		if(bagpack.top().getAmmo() ==0 && !bagpack.top().equals(PICK)) {
+		if(bagpack.top().getAmmo() ==0 && !bagpack.top().getImg().equalsIgnoreCase(PICK)) {
 			bagpack.pop(); 
 			if(!bagpack.top().equals(PICK)) {
 				bagpack.top().setAmmo(bagpack.top().getAmmo()-1);
 			}
-		}else if(!bagpack.top().equals(PICK)) {
+		}else if(!bagpack.top().getImg().equalsIgnoreCase(PICK)) {
 			bagpack.top().setAmmo(bagpack.top().getAmmo()-1);
 		}
 	}
